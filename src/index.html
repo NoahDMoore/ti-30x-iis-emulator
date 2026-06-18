@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TI-30X IIS Emulator</title>
+    <meta name="description" content="A javascript emulator of the Texas Instruments TI-30X-IIS scientific calculator for educational use.">
+    <script src="assets/js/buttons.js"></script>
+</head>
+<body>
+    <div id="svgContainer" data-url="/assets/svg/calculator.svg"></div>
+</body>
+<script>
+    async function onload(){
+        const data=document.getElementById("svgContainer");
+        let svgContainer=data;
+        let urlSvg=data.dataset.url;
+        await fetch(urlSvg)
+            .then(r=>r.text())
+            .then(t=>{svgContainer.innerHTML=t})
+            .catch(e=>console.log(e));
+        let newsvg=svgContainer.children[0];
+        newsvg.setAttribute("id","calculator-svg");
+        newsvg.setAttribute("width","unset");
+        newsvg.setAttribute("height","100vh");
+        addButtonEventListeners();
+    }   
+    onload();
+</script>
+</html>
