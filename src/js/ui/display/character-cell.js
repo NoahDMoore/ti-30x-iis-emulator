@@ -2,6 +2,7 @@ export default class CharacterCell {
     constructor(display, position) {
         this.display = display;
         this.pixels = [];
+        this.currentGlyph = [0,0,0,0,0,0,0];
 
         for (let i = 1; i <= 35; i++) {
             this.pixels.push(
@@ -20,7 +21,21 @@ export default class CharacterCell {
         this.pixels[index].style.visibility = "hidden";
     }
 
+    allOn() {
+        this.pixels.forEach((pixel, index) => {
+            this.pixelOn(index);
+        });
+    }
+
+    clear() {
+        this.pixels.forEach((pixel, index) => {
+            this.pixelOff(index);
+        });
+    }
+
     renderGlyph(glyph) {
+        this.currentGlyph = glyph;
+
         glyph.forEach((row, rowIndex) => {
             for (let col = 0; col < 5; col++) {
                 const mask = 1 << (4 - col);
@@ -35,5 +50,16 @@ export default class CharacterCell {
                 }
             }
         });
+    }
+
+    async blinkCursor() {
+        this.allOn();
+
+        await new Promise(
+            resolve =>
+                setTimeout(resolve, 750)
+        );
+
+        this.renderGlyph(this.currentGlyph);
     }
 }

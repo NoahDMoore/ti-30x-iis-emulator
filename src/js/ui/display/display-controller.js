@@ -13,6 +13,6 @@ export default class DisplayController {
     }
 
     clearDisplay() {
-
+        this.inputRenderer.clear();
     }
 }
