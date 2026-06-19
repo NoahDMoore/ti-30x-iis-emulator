@@ -31,15 +31,6 @@
    inkscape:window-y="-437"
    inkscape:window-maximized="1"
    inkscape:current-layer="output-char-1" />
-<style
-   id="style1">
-  .btn {   }
-  .btn.pressed {
-    transform-box: border-box;
-    transform-origin: center;
-    transform: scale(0.95);
-  }
-</style>
 <defs
    id="defs1"><linearGradient
      id="linearGradient146"><stop
