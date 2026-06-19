@@ -1,0 +1,9 @@
+.btn.pressed {
+    transform-box: border-box;
+    transform-origin: center;
+    transform: scale(0.95);
+}
+
+.pixel-off {
+    visibility: hidden;
+}
