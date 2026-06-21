@@ -1,4 +1,4 @@
-export default digits = {
+export default {
     "-1": {
         "superscript": [
 			0b00011,

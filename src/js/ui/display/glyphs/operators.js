@@ -1,4 +1,4 @@
-export default operators = {
+export default {
     "add": {
         "normal": [
 			0b00000,

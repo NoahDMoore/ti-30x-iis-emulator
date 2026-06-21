@@ -1,4 +1,4 @@
-export default symbols = {
+export default {
     "apostrophe": {
         "normal": [
 			0b01000,

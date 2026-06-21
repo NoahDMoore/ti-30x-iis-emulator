@@ -1,4 +1,4 @@
-export default letters = {
+export default {
     "a_lower": {
         "normal": [
 			0b00000,
