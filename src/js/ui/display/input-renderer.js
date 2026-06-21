@@ -1,12 +1,12 @@
+import InputBuffer from "./input-buffer.js";
 import CharacterCell from "./character-cell.js";
+import Glyphs from "./glyphs/glyphs.js";
 
 export default class InputRenderer {
     constructor(display) {
         this.display = display;
+        this.glyphs = new Glyphs();
         this.characterCells = new Array(11);
-        this.cursorPosition = 0;
-        this.cursorOn = false;
-        this.cursorInterval = null;
 
         for (let i = 0; i < 11; i++) {
             let position = i + 1;
@@ -14,27 +14,23 @@ export default class InputRenderer {
         }
     }
 
-    clear() {
-        this.characterCells.forEach(cell => {
-            cell.clear();
-        });
-    }
+    render(glyphs) {
+        for (let i = 0; i < 11; i++) {
+            const glyph = glyphs[i];
 
-    async toggleCursor() {
-        if (this.cursorOn) {
-            clearInterval(this.cursorInterval);
-            this.cursorOn = false;
-        } else {
-            this.cursorOn = true;
-
-            while (this.cursorOn) {
-                await this.characterCells[this.cursorPosition].blinkCursor();
-
-                await new Promise(
-                    resolve =>
-                        setTimeout(resolve, 750)
-                );
+            if (glyph) {
+                this.characterCells[i].renderGlyph(glyph);
+            } else {
+                this.characterCells[i].clear();
             }
         }
+    }
+
+    showCursor(cursorGlyph, cursorPosition) {
+        this.characterCells[cursorPosition].renderGlyph(cursorGlyph, false);
+    }
+
+    hideCursor(cursorPosition) {
+        this.characterCells[cursorPosition].restore();
     }
 }

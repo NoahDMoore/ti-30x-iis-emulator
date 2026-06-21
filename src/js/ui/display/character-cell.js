@@ -27,14 +27,22 @@ export default class CharacterCell {
         });
     }
 
-    clear() {
-        this.pixels.forEach((pixel, index) => {
-            this.pixelOff(index);
-        });
+    restore() {
+        this.renderGlyph(this.currentGlyph, false);
     }
 
-    renderGlyph(glyph) {
-        this.currentGlyph = glyph;
+    clear() {
+        this.pixels.forEach((pixel, index) => {
+            pixel.style.visibility = "hidden";
+        });
+
+        this.currentGlyph = [0,0,0,0,0,0,0];
+    }
+
+    renderGlyph(glyph, overwrite=true) {
+        if (overwrite) {
+            this.currentGlyph = glyph;
+        }
 
         glyph.forEach((row, rowIndex) => {
             for (let col = 0; col < 5; col++) {
@@ -50,16 +58,5 @@ export default class CharacterCell {
                 }
             }
         });
-    }
-
-    async blinkCursor() {
-        this.allOn();
-
-        await new Promise(
-            resolve =>
-                setTimeout(resolve, 750)
-        );
-
-        this.renderGlyph(this.currentGlyph);
     }
 }
