@@ -1,6 +1,7 @@
 export default class InputBuffer {
     constructor() {
         this.buffer = [];
+        this.maxSize = 88;
         this.currentIndex = 0;
         this.displayPosition = 0;
     }
@@ -41,6 +42,10 @@ export default class InputBuffer {
     }
 
     insert(glyph) {
+        if (this.isFull()) {
+            return;
+        }
+
         this.buffer.splice(this.currentIndex, 0, glyph);
         this.currentIndex++;
         this.updateViewport();
@@ -58,13 +63,19 @@ export default class InputBuffer {
     }
 
     updateViewport() {
-        if (this.currentIndex < this.displayPosition) {
-            this.displayPosition = this.currentIndex;
+        let displayPosition;
+
+        if (this.currentIndex < 10) {
+            displayPosition = 0;
+        } else {
+            displayPosition = this.currentIndex - 10;
         }
 
-        if (this.currentIndex > this.displayPosition + 10) {
-            this.displayPosition = this.currentIndex - 10;
-        }
+        this.displayPosition = displayPosition;
+    }
+
+    hasMemoryWarning() {
+        return this.buffer.length >= 80;
     }
 
     isFull() {

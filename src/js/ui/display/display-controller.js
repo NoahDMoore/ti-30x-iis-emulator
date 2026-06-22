@@ -44,9 +44,13 @@ export default class DisplayController {
     }
 
     // Input
-    handleInput(input) {
+    handleInput(input, insert=false) {
         input.forEach(glyph => {
-            this.inputBuffer.push(glyph);
+            if (insert) {
+                this.inputBuffer.insert(glyph);
+            } else {
+                this.inputBuffer.push(glyph);
+            }
         });
 
         this.refreshDisplay();
@@ -111,7 +115,7 @@ export default class DisplayController {
         const insertCursor = this.glyphs.get("insert");
         const memoryFullCursor = this.glyphs.get("cursor_memory_full");
 
-        if (this.inputBuffer.isFull()) {
+        if (this.inputBuffer.hasMemoryWarning()) {
             return memoryFullCursor;
         }
 
