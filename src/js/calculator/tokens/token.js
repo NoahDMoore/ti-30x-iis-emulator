@@ -1,9 +1,10 @@
 export default class Token {
-    constructor({ id, glyphIDs, glyphRegistry = null, type = "value", arity = null }) {
+    constructor({ id, glyphIDs, glyphRegistry = null, type = "value", value = null, arity = null }) {
         this.id = id;
         this.glyphIDs = glyphs;
         this.glyphRegistry = glyphRegistry;
         this.type = type;
+        this.value = value;
         this.arity = arity;
     }
 
