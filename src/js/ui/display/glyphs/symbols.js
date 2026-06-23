@@ -1,5 +1,5 @@
 export default {
-    "apostrophe": {
+    "'": {
         "normal": [
 			0b01000,
 			0b01000,
@@ -11,7 +11,7 @@ export default {
 		]
     },
 
-    "bidirectional_pointer": {
+    "bidirectionalPointer": {
         "normal": [
 			0b00000,
 			0b00000,
@@ -23,7 +23,7 @@ export default {
 		]
     },
 
-    "caret": {
+    "^": {
         "normal": [
 			0b00100,
 			0b01010,
@@ -35,7 +35,7 @@ export default {
 		]
     },
 
-    "colon": {
+    ":": {
         "normal": [
 			0b00000,
 			0b01100,
@@ -47,7 +47,7 @@ export default {
 		]
     },
 
-    "comma": {
+    ",": {
         "normal": [
 			0b00000,
 			0b00000,
@@ -71,7 +71,7 @@ export default {
 		]
     },
 
-    "cursor_memory_full": {
+    "cursorMemoryFull": {
         "normal": [
 			0b10101,
 			0b01010,
@@ -83,7 +83,7 @@ export default {
 		]
     },
 
-    "decimal_point": {
+    "decimalPoint": {
         "normal": [
 			0b00000,
 			0b00000,
@@ -107,7 +107,7 @@ export default {
 		]
     },
 
-    "exclamation_point": {
+    "!": {
         "normal": [
 			0b00100,
 			0b00100,
@@ -164,7 +164,7 @@ export default {
 		]
     },
 
-    "left_parenthesis": {
+    "(": {
         "normal": [
 			0b00010,
 			0b00100,
@@ -188,7 +188,7 @@ export default {
 		]
     },
 
-    "mixed_fraction": {
+    "mixedFraction": {
         "normal": [
 			0b01000,
 			0b11001,
@@ -212,7 +212,7 @@ export default {
 		]
     },
 
-    "percent": {
+    "%": {
         "normal": [
 			0b11000,
 			0b11001,
@@ -248,7 +248,7 @@ export default {
 		]
     },
 
-    "right_parenthesis": {
+    ")": {
         "normal": [
 			0b01000,
 			0b00100,
@@ -260,7 +260,7 @@ export default {
 		]
     },
 
-    "right_pointer": {
+    "rightPointer": {
         "normal": [
 			0b00000,
 			0b01000,
@@ -296,7 +296,7 @@ export default {
 		]
     },
 
-    "sigma_lower": {
+    "sigmaLower": {
         "superscript": [
 			0b00000,
 			0b01111,
@@ -308,7 +308,7 @@ export default {
 		]
     },
 
-    "sigma_upper": {
+    "sigmaUpper": {
         "superscript": [
 			0b11111,
 			0b01000,
@@ -320,7 +320,7 @@ export default {
 		]
     },
 
-    "simple_fraction": {
+    "simpleFraction": {
         "normal": [
 			0b10000,
 			0b11001,
@@ -329,6 +329,18 @@ export default {
 			0b01011,
 			0b10010,
 			0b00011 
+		]
+    },
+
+    "space": {
+        "normal": [
+			0b00000,
+			0b00000,
+			0b00000,
+			0b00000,
+			0b00000,
+			0b00000,
+			0b00000 
 		]
     },
 
@@ -353,7 +365,7 @@ export default {
 		]
     },
 
-    "x_bar": {
+    "xBar": {
         "superscript": [
 			0b01110,
 			0b00000,
@@ -365,7 +377,7 @@ export default {
 		]
     },
 
-    "x_root_index": {
+    "xRootIndex": {
         "normal": [
 			0b00101,
 			0b00010,
@@ -377,7 +389,7 @@ export default {
 		]
     },
 
-    "y_bar": {
+    "yBar": {
         "superscript": [
 			0b01110,
 			0b00000,

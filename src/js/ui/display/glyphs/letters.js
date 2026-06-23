@@ -1,5 +1,5 @@
 export default {
-    "a_lower": {
+    "a": {
         "normal": [
 			0b00000,
 			0b00000,
@@ -20,7 +20,7 @@ export default {
 		]
     },
 
-    "a_upper": {
+    "A": {
         "normal": [
 			0b01110,
 			0b10001,
@@ -41,7 +41,7 @@ export default {
 		],
     },
 
-    "b_lower": {
+    "b": {
         "superscript": [
 			0b10000,
 			0b10100,
@@ -53,7 +53,7 @@ export default {
 		]
     },
 
-    "b_upper": {
+    "B": {
         "normal": [
 			0b11110,
 			0b10001,
@@ -74,7 +74,7 @@ export default {
 		]
     },
 
-    "c_lower": {
+    "c": {
         "normal": [
 			0b00000,
 			0b00000,
@@ -86,7 +86,7 @@ export default {
 		]
     },
 
-    "c_upper": {
+    "C": {
         "superscript": [
 			0b01111,
 			0b10000,
@@ -98,7 +98,7 @@ export default {
 		]
     },
 
-    "d_upper": {
+    "d": {
         "normal": [
             0b11100,
             0b10010,
@@ -119,7 +119,19 @@ export default {
         ]
     },
 
-    "e_upper": {
+    "e": {
+        "normal": [
+			0b00000,
+			0b00000,
+			0b01110,
+			0b10001,
+			0b11110,
+			0b10000,
+			0b01100 
+		]
+    },
+
+    "E": {
         "normal": [
 			0b11111,
 			0b10000,
@@ -149,7 +161,7 @@ export default {
 		]
     },
 
-    "f_upper": {
+    "F": {
         "normal": [
 			0b11111,
 			0b10000,
@@ -170,19 +182,7 @@ export default {
 		]
     },
 
-    "f_upper": {
-        "normal": [
-			0b00000,
-			0b00000,
-			0b01110,
-			0b10001,
-			0b11110,
-			0b10000,
-			0b01100 
-		]
-    },
-
-    "g_lower": {
+    "g": {
         "normal": [
 			0b00000,
 			0b01111,
@@ -203,7 +203,7 @@ export default {
 		]
     },
 
-    "g_upper": {
+    "G": {
         "normal": [
 			0b01110,
 			0b10001,
@@ -215,7 +215,7 @@ export default {
 		]
     },
 
-    "h_upper": {
+    "H": {
         "normal": [
 			0b10001,
 			0b10001,
@@ -227,7 +227,7 @@ export default {
 		]
     },
 
-    "i_lower": {
+    "i": {
         "normal": [
 			0b00100,
 			0b00000,
@@ -239,7 +239,7 @@ export default {
 		]
     },
 
-    "i_upper": {
+    "I": {
         "normal": [
 			0b01110,
 			0b00100,
@@ -260,7 +260,7 @@ export default {
 		]
     },
 
-    "k_upper": {
+    "K": {
         "normal": [
 			0b10001,
 			0b10010,
@@ -272,7 +272,7 @@ export default {
 		]
     },
 
-    "l_lower": {
+    "l": {
         "normal": [
 			0b01100,
 			0b00100,
@@ -284,7 +284,7 @@ export default {
 		]
     },
 
-    "l_upper": {
+    "L": {
         "normal": [
 			0b10000,
 			0b10000,
@@ -305,7 +305,7 @@ export default {
 		]
     },
 
-    "m_upper": {
+    "M": {
         "normal": [
 			0b10001,
 			0b11011,
@@ -326,7 +326,7 @@ export default {
 		]
     },
 
-    "n_lower": {
+    "n": {
         "normal": [
 			0b00000,
 			0b00000,
@@ -347,7 +347,7 @@ export default {
 		]
     },
 
-    "n_upper": {
+    "N": {
         "normal": [
 			0b10001,
 			0b10001,
@@ -368,7 +368,7 @@ export default {
 		]
     },
 
-    "o_lower": {
+    "o": {
         "normal": [
 			0b00000,
 			0b00000,
@@ -380,7 +380,7 @@ export default {
 		]
     },
 
-    "o_upper": {
+    "O": {
         "normal": [
 			0b01110,
 			0b10001,
@@ -401,7 +401,7 @@ export default {
 		]
     },
 
-    "p_upper": {
+    "P": {
         "superscript": [
 			0b11110,
 			0b10001,
@@ -413,7 +413,7 @@ export default {
 		]
     },
 
-    "q_upper": {
+    "Q": {
         "normal": [
 			0b01110,
 			0b10001,
@@ -425,7 +425,7 @@ export default {
 		]
     },
 
-    "r_lower": {
+    "r": {
         "superscript": [
 			0b00000,
 			0b10100,
@@ -437,7 +437,7 @@ export default {
 		]
     },
 
-    "r_upper": {
+    "R": {
         "normal": [
 			0b11110,
 			0b10001,
@@ -458,7 +458,7 @@ export default {
 		],
     },
 
-    "s_lower": {
+    "s": {
         "normal": [
 			0b00000,
 			0b00000,
@@ -470,7 +470,7 @@ export default {
 		]
     },
 
-    "s_upper": {
+    "S": {
         "normal": [
 			0b01111,
 			0b10000,
@@ -491,7 +491,7 @@ export default {
 		]
     },
 
-    "t_lower": {
+    "t": {
         "normal": [
 			0b01000,
 			0b01000,
@@ -503,7 +503,7 @@ export default {
 		]
     },
 
-    "t_upper": {
+    "T": {
         "normal": [
 			0b11111,
 			0b00100,
@@ -524,7 +524,7 @@ export default {
 		]
     },
 
-    "u_upper": {
+    "U": {
         "normal": [
 			0b10001,
 			0b10001,
@@ -536,7 +536,7 @@ export default {
 		]
     },
 
-    "v_upper": {
+    "V": {
         "normal": [
 			0b10001,
 			0b10001,
@@ -557,7 +557,7 @@ export default {
 		]
     },
 
-    "w_upper": {
+    "W": {
         "normal": [
 			0b10001,
 			0b10001,
@@ -569,7 +569,7 @@ export default {
 		]
     },
 
-    "x_lower": {
+    "x": {
         "superscript": [
 			0b00000,
 			0b01010,
@@ -581,7 +581,7 @@ export default {
 		]
     },
 
-    "x_upper": {
+    "X": {
         "normal": [
 			0b10001,
 			0b10001,
@@ -602,7 +602,7 @@ export default {
 		]
     },
 
-    "y_lower": {
+    "y": {
         "superscript": [
 			0b00000,
 			0b01010,
@@ -614,7 +614,7 @@ export default {
 		]
     },
 
-    "y_upper": {
+    "Y": {
         "normal": [
 			0b10001,
 			0b10001,
