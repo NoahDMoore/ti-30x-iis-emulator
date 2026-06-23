@@ -2,9 +2,9 @@ import ButtonController from "./button-controller.js";
 import DisplayController from "./display/display-controller.js";
 
 export default class CalculatorView {
-    constructor(root) {
+    constructor(root, inputBuffer) {
         this.root = root;
-        this.calculator = null;
+        this.inputBuffer = inputBuffer;
         this.svgFile = "../../assets/svg/calculator.svg";
         this.svg = null;
         this.buttonController = null;
@@ -17,7 +17,7 @@ export default class CalculatorView {
         this.buttonController = new ButtonController(this.svg);
         this.buttonController.initialize();
 
-        this.displayController = new DisplayController(this.svg);
+        this.displayController = new DisplayController(this.svg, this.inputBuffer);
         this.displayController.initialize();
     }
 

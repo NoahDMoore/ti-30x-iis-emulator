@@ -6,8 +6,31 @@ export default class InputBuffer {
         this.displayPosition = 0;
     }
 
-    getCursorPosition() {
+    get hasMemoryWarning() {
+        return this.buffer.length >= this.maxSize - 8;
+    }
+
+    get isFull() {
+        return this.buffer.length >= this.maxSize;
+    }
+
+    get hasLeftOverflow() {
+        return this.displayPosition > 0;
+    }
+
+    get hasRightOverflow() {
+        return (this.displayPosition + 11 < this.buffer.length);
+    }
+
+    get cursorPosition() {
         return this.currentIndex - this.displayPosition;
+    }
+
+    get visibleTokens() {
+        return this.buffer.slice(
+            this.displayPosition,
+            this.displayPosition + 11
+        );
     }
 
     moveCursorLeft() {
@@ -24,29 +47,22 @@ export default class InputBuffer {
         this.updateViewport();
     }
 
-    getVisibleGlyphs() {
-        return this.buffer.slice(
-            this.displayPosition,
-            this.displayPosition + 11
-        );
-    }
-
-    push(glyph) {
-        if (this.isFull() && this.currentIndex === this.buffer.length) {
+    push(token) {
+        if (this.isFull && this.currentIndex === this.buffer.length) {
             this.currentIndex--;
         }
 
-        this.buffer[this.currentIndex] = glyph;
+        this.buffer[this.currentIndex] = token;
         this.currentIndex++;
         this.updateViewport();
     }
 
-    insert(glyph) {
-        if (this.isFull()) {
+    insert(token) {
+        if (this.isFull) {
             return;
         }
 
-        this.buffer.splice(this.currentIndex, 0, glyph);
+        this.buffer.splice(this.currentIndex, 0, token);
         this.currentIndex++;
         this.updateViewport();
     }
@@ -72,21 +88,5 @@ export default class InputBuffer {
         }
 
         this.displayPosition = displayPosition;
-    }
-
-    hasMemoryWarning() {
-        return this.buffer.length >= 80;
-    }
-
-    isFull() {
-        return this.buffer.length === 88;
-    }
-
-    hasLeftOverflow() {
-        return this.displayPosition > 0;
-    }
-
-    hasRightOverflow() {
-        return (this.displayPosition + 11 < this.buffer.length);
     }
 }

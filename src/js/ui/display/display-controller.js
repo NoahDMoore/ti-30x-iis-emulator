@@ -1,80 +1,43 @@
 import Glyphs from "./glyphs/glyphs.js";
 import Indicators from "./indicators.js";
-import InputBuffer from "./input-buffer.js";
 import InputRenderer from "./input-renderer.js";
 
 export default class DisplayController {
-    constructor(svg) {
+    constructor(svg, inputBuffer) {
         this.svg = svg;
         this.display = null;
+        this.inputBuffer = inputBuffer;
         this.inputRenderer = null;
         this.glyphs = new Glyphs;
 
         // Cursor
         this.cursorEnabled = false;
         this.cursorTask = null;
-        this.cursorPosition = 0;
         this.cursorGlyph = null;
     }
 
     initialize() {
         this.display = this.svg.getElementById("display-group");
         this.indicators = new Indicators(this.display);
-        this.inputBuffer = new InputBuffer(this.display);
         this.inputRenderer = new InputRenderer(this.display);
         
         // Cursor
         this.cursorGlyph = this.getCursorGlyph();
-        this.cursorPosition = this.inputBuffer.getCursorPosition();
     }
 
     clearDisplay() {
+        this.inputBuffer.clear();
         this.indicators.clear();
-        this.clearInput();
+        this.refreshDisplay();
     }
 
     refreshDisplay() {
-        const visibleGlyphs = this.inputBuffer.getVisibleGlyphs();
-        this.inputRenderer.render(visibleGlyphs);
+        const visibleTokens = this.inputBuffer.visibleTokens;
+        this.inputRenderer.render(visibleTokens);
 
         this.cursorGlyph = this.getCursorGlyph();
-        this.cursorPosition = this.inputBuffer.getCursorPosition();
 
         this.updateIndicators();
-    }
-
-    // Input
-    handleInput(input, insert=false) {
-        input.forEach(glyph => {
-            if (insert) {
-                this.inputBuffer.insert(glyph);
-            } else {
-                this.inputBuffer.push(glyph);
-            }
-        });
-
-        this.refreshDisplay();
-    }
-
-    deleteInput() {
-        this.inputBuffer.delete();
-        this.refreshDisplay();
-    }
-
-    clearInput() {
-        this.inputBuffer.clear();
-        this.refreshDisplay();
-    }
-
-    // Cursor
-    moveCursorLeft() {
-        this.inputBuffer.moveCursorLeft();
-        this.refreshDisplay();
-    }
-    
-    moveCursorRight() {
-        this.inputBuffer.moveCursorRight();
-        this.refreshDisplay();
     }
 
     startCursor() {
@@ -93,7 +56,7 @@ export default class DisplayController {
 
     async cursorLoop() {
         while (this.cursorEnabled) {
-            const cursorPosition = this.cursorPosition;
+            const cursorPosition = this.inputBuffer.cursorPosition;
             this.inputRenderer.showCursor(this.cursorGlyph, cursorPosition);
             await this.cursorWait();
             this.inputRenderer.hideCursor(cursorPosition);
@@ -115,7 +78,7 @@ export default class DisplayController {
         const insertCursor = this.glyphs.get("insert");
         const memoryFullCursor = this.glyphs.get("cursor_memory_full");
 
-        if (this.inputBuffer.hasMemoryWarning()) {
+        if (this.inputBuffer.hasMemoryWarning) {
             return memoryFullCursor;
         }
 
@@ -131,17 +94,16 @@ export default class DisplayController {
         const leftArrowIndicator = this.indicators.get("left-arrow-indicator");
         const rightArrowIndicator = this.indicators.get("right-arrow-indicator");
         
-        if (this.inputBuffer.hasLeftOverflow()) {
+        if (this.inputBuffer.hasLeftOverflow) {
             this.indicators.indicatorOn(leftArrowIndicator);
         } else {
             this.indicators.indicatorOff(leftArrowIndicator);
         }
 
-        if (this.inputBuffer.hasRightOverflow()) {
+        if (this.inputBuffer.hasRightOverflow) {
             this.indicators.indicatorOn(rightArrowIndicator);
         } else {
             this.indicators.indicatorOff(rightArrowIndicator);
         }
-
     }
 }

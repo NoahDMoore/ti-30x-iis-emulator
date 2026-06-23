@@ -1,4 +1,3 @@
-import InputBuffer from "./input-buffer.js";
 import CharacterCell from "./character-cell.js";
 import Glyphs from "./glyphs/glyphs.js";
 
