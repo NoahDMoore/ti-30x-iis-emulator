@@ -1,6 +1,6 @@
 export default {
     "-1": {
-        "superscript": [
+        "normal": [
 			0b00011,
 			0b00001,
 			0b11001,
