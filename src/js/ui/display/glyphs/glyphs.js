@@ -18,19 +18,29 @@ export default class Glyphs {
         this.symbols = symbols;
     }
 
-    get(character, variant="normal") {
-        const glyph = this.glyphs[character];
+    get(glyphID, variant="normal") {
+        const glyph = this.glyphs[glyphID];
 
         if (!glyph) {
-            throw Error(`Unknown glyph: ${character}`);
+            throw Error(`Unknown glyph: ${glyphID}`);
         }
 
         const variantGlyph = glyph[variant];
 
         if (!variantGlyph) {
-            throw Error(`Invalid variant '${variant}' for glyph '${character}'`);
+            throw Error(`Invalid variant '${variant}' for glyph '${glyphID}'`);
         }
 
-        return variantGlyph
+        return variantGlyph;
+    }
+
+    getMultiple(glyphIDs, variant) {
+        let glyphs = [];
+        for (let glyphID of glyphIDs) {
+            const glyph = this.get(glyphID, variant);
+            glyphs.push(glyph);
+        }
+
+        return glyphs;
     }
 }
