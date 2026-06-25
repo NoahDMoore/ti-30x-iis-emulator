@@ -5,206 +5,271 @@ const glyphs = new Glyphs();
 export default {
     "log": {
         id: "log",
-        glyphIDs: ["l", "o", "g", "("],
+        glyphs: {
+            normal: glyphs.getMultiple(["l", "o", "g", "("], "normal")
+        },
         type: "function",
         arity: 1
     },
 
     "naturalLog": {
         id: "log",
-        glyphIDs: ["l", "n", "("],
+        glyphs: {
+            normal: glyphs.getMultiple(["l", "n", "("], "normal")
+        },
         type: "function",
         arity: 1
     },
 
     "eToThePowerOfX": {
         id: "log",
-        glyphIDs: ["e", "^", "("],
+        glyphs: {
+            normal: glyphs.getMultiple(["e", "^", "("], "normal")
+        },
         type: "function",
         arity: 1
     },
 
     "tenToThePowerOfX": {
         id: "tenToThePowerOf",
-        glyphIDs: ["10", "^", "("],
+        glyphs: {
+            normal: glyphs.getMultiple(["10", "^", "("], "normal")
+        },
         type: "function",
         arity: 1
     },
 
     "scientificNotation": {
         id: "scientificNotation",
-        glyphsIDs: ["E"],
+        glyphsIDs: {
+            normal: glyphs.getMultiple(["E"], "normal")
+        },
         type: "function",
         arity: 2
     },
 
     "nPr": {
         id: "nPr",
-        glyphIDs: ["space", "n", "P", "r", "space"],
+        glyphs: {
+            normal: glyphs.getMultiple(["space", "n", "P", "r", "space"], "normal"),
+            menu: glyphs.getMultiple(["n", "P", "r"], "superscript")
+        },
         type: "function",
         arity: 2
     },
 
     "nCr": {
         id: "nCr",
-        glyphIDs: ["space", "n", "C", "r", "space"],
+        glyphs: {
+            normal: glyphs.getMultiple(["space", "n", "C", "r", "space"], "normal"),
+            menu: glyphs.getMultiple(["n", "C", "r"], "superscript")
+        },
         type: "function",
         arity: 2
     },
 
     "factorial": {
         id: "factorial",
-        glyphIDs: ["!"],
+        glyphs: {
+            normal: glyphs.getMultiple(["!"], "normal"),
+            menu: glyphs.getMultiple(["!"], "superscript")
+        },
         type: "function",
         arity: 1
     },
 
     "rand": {
         id: "rand",
-        glyphIDs: ["R", "A", "N", "D"],
+        glyphs: {
+            normal: glyphs.getMultiple(["R", "A", "N", "D"], "normal"),
+            menu: glyphs.getMultiple(["R", "A", "N", "D"], "superscript"),
+        },
         type: "function",
         arity: 0
     },
 
     "randI": {
         id: "randI",
-        glyphIDs: ["R", "A", "N", "D", "I", "("],
+        glyphs: {
+            normal: glyphs.getMultiple(["R", "A", "N", "D", "I", "("], "normal"),
+            menu: glyphs.getMultiple(["R", "A", "N", "D", "I"], "superscript")
+        },
         type: "function",
         arity: 2
     },
 
     "fractionToFromDecimal": {
         id: "fractionToFromDecimal",
-        glyphIDs: ["rightPointer", "F", "bidirectionalPointer", "D"],
+        glyphs: {
+            normal: glyphs.getMultiple(["rightPointer", "F", "bidirectionalPointer", "D"], "normal")
+        },
         type: "function",
         arity: 1
     },
 
     "rectangularToPolarRadius": {
         id: "rectangularToPolarRadius",
-        glyphIDs: ["R", "rightPointer", "P", "r"],
+        glyphs: {
+            normal: glyphs.getMultiple(["R", "rightPointer", "P", "r", "("], "normal"),
+            menu: glyphs.getMultiple(["R", "rightPointer", "P", "r"], "superscript")
+        },
         type: "function",
         arity: 2
     },
 
     "rectangularToPolarAngle": {
         id: "rectangularToPolarRadius",
-        glyphIDs: ["R", "rightPointer", "P", "theta"],
+        glyphs: {
+            normal: glyphs.getMultiple(["R", "rightPointer", "P", "theta", "("], "normal"),
+            menu: glyphs.getMultiple(["R", "rightPointer", "P", "theta"], "superscript")
+        },
         type: "function",
         arity: 2
     },
 
     "rectangularToPolarX": {
         id: "rectangularToPolarRadius",
-        glyphIDs: ["R", "rightPointer", "P", "x"],
+        glyphs: {
+            normal: glyphs.getMultiple(["R", "rightPointer", "P", "x", "("], "normal"),
+            menu: glyphs.getMultiple(["R", "rightPointer", "P", "x"], "superscript")
+        },
         type: "function",
         arity: 2
     },
 
     "rectangularToPolarY": {
         id: "rectangularToPolarRadius",
-        glyphIDs: ["R", "rightPointer", "P", "y"],
+        glyphs: {
+            normal: glyphs.getMultiple(["R", "rightPointer", "P", "y", "("], "normal"),
+            menu: glyphs.getMultiple(["R", "rightPointer", "P", "y"], "superscript")
+        },
         type: "function",
         arity: 2
     },
 
     "fraction": {
         id: "fraction",
-        glyphIDs: ["fraction"],
+        glyphs: {
+            normal: glyphs.getMultiple(["fraction"], "normal")
+        },
         type: "function",
         arity: 2
     },
 
     "mixedToFromSimpleFraction": {
         id: "mixedToFromSimpleFraction",
-        glyphIDs: ["rightPointer", "A", "simpleFraction", "bidirectionalPointer", "mixedFraction"],
+        glyphs: {
+            normal: glyphs.getMultiple(["rightPointer", "A", "simpleFraction", "bidirectionalPointer", "mixedFraction"], "normal")
+        },
         type: "function",
         arity: 2
     },
 
     "sin": {
         id: "sin",
-        glyphIDs: ["s", "i", "n", "("],
+        glyphs: {
+            normal: glyphs.getMultiple(["s", "i", "n", "("], "normal")
+        },
         type: "function",
         arity: 1
     },
 
     "inverseSin": {
         id: "inverseSin",
-        glyphIDs: ["s", "i", "n", "-1", "("],
+        glyphs: {
+            normal: glyphs.getMultiple(["s", "i", "n", "-1", "("], "normal")
+        },
         type: "function",
         arity: 1
     },
 
     "cos": {
         id: "cos",
-        glyphIDs: ["c", "o", "s", "("],
+        glyphs: {
+            normal: glyphs.getMultiple(["c", "o", "s", "("], "normal")
+        },
         type: "function",
         arity: 1
     },
 
     "inverseCos": {
         id: "inverseCos",
-        glyphIDs: ["c", "o", "s", "-1", "("],
+        glyphs: {
+            normal: glyphs.getMultiple(["c", "o", "s", "-1", "("], "normal")
+        },
         type: "function",
         arity: 1
     },
 
     "tan": {
         id: "tan",
-        glyphIDs: ["t", "a", "n", "("],
+        glyphs: {
+            normal: glyphs.getMultiple(["t", "a", "n", "("], "normal")
+        },
         type: "function",
         arity: 1
     },
 
     "inverseTan": {
         id: "inverseTan",
-        glyphIDs: ["t", "a", "n", "-1", "("],
+        glyphs: {
+            normal: glyphs.getMultiple(["t", "a", "n", "-1", "("], "normal")
+        },
         type: "function",
         arity: 1
     },
 
     "xRoot": {
         id: "xRoot",
-        glyphIDs: ["xRootIndex", "root"],
+        glyphs: {
+            normal: glyphs.getMultiple(["xRootIndex", "root"], "normal")
+        },
         type: "function",
         arity: 2
     },
 
     "squareRoot": {
         id: "squareRoot",
-        glyphIDs: ["root", "("],
+        glyphs: {
+            normal: glyphs.getMultiple(["root", "("], "normal")
+        },
         type: "function",
         arity: 1
     },
 
     "square": {
         id: "square",
-        glyphIDs: ["squared"],
+        glyphs: {
+            normal: glyphs.getMultiple(["squared"], "normal")
+        },
         type: "function",
         arity: 1
     },
 
     "exponent": {
         id: "exponent",
-        glyphIDs: ["caret"],
+        glyphs: {
+            normal: glyphs.getMultiple(["^"], "normal")
+        },
         type: "function",
         arity: 2
     },
 
     "invert": {
         id: "invert",
-        glyphIDs: ["-1"],
+        glyphs: {
+            normal: glyphs.getMultiple(["-1"], "normal")
+        },
         type: "function",
         arity: 1
     },
 
     "percent": {
         id: "percent",
-        glyphIDs: ["%"],
+        glyphs: {
+            normal: glyphs.getMultiple(["%"], "normal")
+        },
         type: "function",
         arity: 1
-    },
-
-    
+    }
 }

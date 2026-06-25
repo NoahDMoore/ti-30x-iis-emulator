@@ -1,4 +1,6 @@
 import Glyphs from "../../ui/display/glyphs/glyphs.js"
+import constantTokens from "./constant-tokens.js";
+import functionTokens from "./function-tokens.js";
 import Token from "./token.js";
 
 export default class TokenRegistry {
@@ -6,13 +8,9 @@ export default class TokenRegistry {
     constructor() {
         this.glyphs = new Glyphs();
 
-        this.compoundDefinitions = {
-
-            permutation: {
-                glyphs: ["n","P","r"],
-                category: "function"
-            }
-
+        this.tokens = {
+            ...functionTokens,
+            ...constantTokens
         };
 
         this.types = {
@@ -35,23 +33,26 @@ export default class TokenRegistry {
         };
     }
 
-    get(id, variant="normal") {
+    get(id) {
 
         // Explicit definitions
-        if (id in this.compoundDefinitions) {
+        if (id in this.tokens) {
 
             return new Token({
-                id,
-                ...this.compoundDefinitions[id],
-                glyphRegistry: this.glyphs
+                ...this.tokens[id]
             });
         }
 
-        // Everything else defaults
+        // Everything Infer From Glyph
+        let type = this.inferType(id);
+
         return new Token({
             id,
-            glyphIDs: [id],
-            type: this.inferType(id)
+            glyphs: {
+                normal: [this.glyphs.get(id, "normal")]
+            },
+            type: type,
+            value: (type == "digit") ? parseInt(id) : null
         });
     }
 
