@@ -11,6 +11,7 @@ export default class DisplayController {
         this.glyphs = new Glyphs;
 
         // Cursor
+        this.insertMode = false;
         this.cursorEnabled = false;
         this.cursorTask = null;
         this.cursorGlyph = null;
@@ -23,6 +24,8 @@ export default class DisplayController {
         
         // Cursor
         this.cursorGlyph = this.getCursorGlyph();
+
+        this.clearDisplay();
     }
 
     clearDisplay() {
@@ -32,8 +35,10 @@ export default class DisplayController {
     }
 
     refreshDisplay() {
-        const visibleTokens = this.inputBuffer.visibleTokens;
-        this.inputRenderer.render(visibleTokens);
+        const visibleGlyphs = this.inputBuffer.visibleGlyphs;
+        const displayWidth = this.inputBuffer.displayWidth;
+        const displayOffset = this.inputBuffer.displayOffset;
+        this.inputRenderer.render(visibleGlyphs, displayWidth, displayOffset);
 
         this.cursorGlyph = this.getCursorGlyph();
 
@@ -57,9 +62,10 @@ export default class DisplayController {
     async cursorLoop() {
         while (this.cursorEnabled) {
             const cursorPosition = this.inputBuffer.cursorPosition;
-            this.inputRenderer.showCursor(this.cursorGlyph, cursorPosition);
+            const displayOffset = this.inputBuffer.displayOffset;
+            this.inputRenderer.showCursor(this.cursorGlyph, cursorPosition + displayOffset);
             await this.cursorWait();
-            this.inputRenderer.hideCursor(cursorPosition);
+            this.inputRenderer.hideCursor(cursorPosition + displayOffset);
             await this.cursorWait();
         }
 
@@ -76,15 +82,15 @@ export default class DisplayController {
     getCursorGlyph() {
         const normalCursor = this.glyphs.get("cursor");
         const insertCursor = this.glyphs.get("insert");
-        const memoryFullCursor = this.glyphs.get("cursor_memory_full");
+        const memoryFullCursor = this.glyphs.get("cursorMemoryFull");
 
         if (this.inputBuffer.hasMemoryWarning) {
             return memoryFullCursor;
         }
 
-        //if (this.insertMode) {
-        //    return insertCursor;
-        //}
+        if (this.insertMode) {
+            return insertCursor;
+        }
 
         return normalCursor;
     }
@@ -93,6 +99,8 @@ export default class DisplayController {
     updateIndicators() {
         const leftArrowIndicator = this.indicators.get("left-arrow-indicator");
         const rightArrowIndicator = this.indicators.get("right-arrow-indicator");
+        const upArrowIndicator = this.indicators.get("up-arrow-indicator");
+        const downArrowIndicator = this.indicators.get("down-arrow-indicator");
         
         if (this.inputBuffer.hasLeftOverflow) {
             this.indicators.indicatorOn(leftArrowIndicator);
@@ -104,6 +112,18 @@ export default class DisplayController {
             this.indicators.indicatorOn(rightArrowIndicator);
         } else {
             this.indicators.indicatorOff(rightArrowIndicator);
+        }
+
+        if (this.inputBuffer.hasHistoryUp) {
+            this.indicators.indicatorOn(upArrowIndicator);
+        } else {
+            this.indicators.indicatorOff(upArrowIndicator);
+        }
+
+        if (this.inputBuffer.hasHistoryDown) {
+            this.indicators.indicatorOn(downArrowIndicator);
+        } else {
+            this.indicators.indicatorOff(downArrowIndicator);
         }
     }
 }

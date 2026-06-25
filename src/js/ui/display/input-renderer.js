@@ -13,14 +13,15 @@ export default class InputRenderer {
         }
     }
 
-    render(glyphs) {
-        for (let i = 0; i < 11; i++) {
+    render(glyphs, displayWidth=11, displayOffset=0) {
+        console.log(`Width: ${displayWidth}, Offset: ${displayOffset}`);
+        for (let i = 0; i < displayWidth; i++) {
             const glyph = glyphs[i];
 
             if (glyph) {
-                this.characterCells[i].renderGlyph(glyph);
+                this.characterCells[i + displayOffset].renderGlyph(glyph);
             } else {
-                this.characterCells[i].clear();
+                this.characterCells[i + displayOffset].clear();
             }
         }
     }
